@@ -1,0 +1,185 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+#define _g char g = _getch();
+#define fend cout << "\n\n\nНажмите любую кнопку для продолжения.."; _g
+
+void z1() {
+	int a = -1;
+
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 1\n\n"
+			<< "С начала суток прошло ";
+		cin
+			>> a;
+	} while (a < 0);
+
+	system("cls");
+	cout
+		<< "Задание номер 1\n\n"
+		<< "С начала суток прошло "
+		<< a
+		<< " секунд\n"
+		<< "С начала последней минуты прошло "
+		<< a%60
+		<< " секунд";
+	fend
+}
+
+void dow(int a) {
+	switch (a) {
+	case 1: cout << "понедельником"; break;
+	case 2: cout << "вторником"; break;
+	case 3: cout << "средой"; break;
+	case 4: cout << "четвергом"; break;
+	case 5: cout << "пятницей"; break;
+	case 6: cout << "субботой"; break;
+	case 0:
+	case 7: cout << "воскресеньем"; break;
+	}
+}//special output function for z2 and z3
+
+void z2() {
+	int K = -1, N = 1;
+
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 2\n\n"
+			<< "Введите номер дня года ";
+		cin
+			>> K;
+		if (K == 0) return;
+	} while (K < 1 || K>365);
+
+	system("cls");
+	cout
+		<< "Задание номер 2\n\n"
+		<< "При условии что 1 января этого года являлось понедельником";
+	cout
+		<< "\n"
+		<< K
+		<< "-й день этого года является ";
+	dow(K % 7);
+	fend
+}
+
+void z3() {
+	int K=-1, N=-1;
+
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 3\n\n"
+			<< "Введите номер дня года ";
+		cin
+			>> K;
+		if (K == 0) return;
+		if (K < 1 || K>365) continue;
+		cout
+			<< "Введите каким днем недели являлось 1 января этого года\n"
+			<< "1 - пн\n"
+			<< "2 - вт\n"
+			<< "3 - ср\n"
+			<< "4 - чт\n"
+			<< "5 - пт\n"
+			<< "6 - сб\n"
+			<< "7 - вс\n";
+		cin
+			>> N;
+		if (N==0) return;
+	} while (N<1||N>7);
+
+	system("cls");
+	cout
+		<< "Задание номер 3\n\n"
+		<< "При условии что 1 января этого года являлось ";
+	dow(N);
+	cout
+		<< "\n"
+		<< K
+		<< "-й день этого года является ";
+	if (K<7) dow(K + N);
+	else dow((K + N - 8) % 7);
+	fend
+}
+
+void z4() {
+	int A, B, C;
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 4\n\n"
+			<< "Введите стороны прямоугольника А и B\n";
+		cin >> A >> B;
+		cout << "Введите сторону квадрата\n";
+		cin >> C;
+		if (A == 0 || B == 0 || C == 0) return;
+	} while (A < 1 || B < 1 || C < 1);
+	system("cls");
+	cout
+		<< "Задание номер 4\n\n"
+		<< "При условии что А = " << A
+		<< ", B = " << B
+		<< ", a C = " << C
+		<< "\nНа прямоугольнике размера A x B без наложений может быть размещено "
+		<< (B / C) * (A / C)
+		<< " квадратов со стороной C\n\n"
+		<< "Площадь незанятой части прямоугольника = "
+		<< A * B - (B / C) * (A / C) * C * C;
+	fend
+}
+
+void z5() {
+	int a = -1;
+
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 5\n\n"
+			<< "Введите год ";
+		cin
+			>> a;
+	} while (a < 0);
+	int b = a / 100;
+	if (a % 100 != 0) b++;
+	system("cls");
+	cout
+		<< "Задание номер 5\n\n"
+		<< a
+		<< "-у году соответствует "
+		<< b
+		<< "-й номер столетия";
+	fend
+}
+
+int pp() {
+	int a = 0;
+	system("cls");
+	cout << "Выберите номер задания\n(для завершения введите 0)\n\n";
+	cin >> a;
+	switch (a)
+	{	
+	case 0: return 0;
+	case 1: z1(); return 1;
+	case 2: z2(); return 1;
+	case 3: z3(); return 1;
+	case 4: z4(); return 1;
+	case 5: z5(); return 1;
+	}
+}
+
+int main()
+{
+	setlocale(0, "");
+
+	while (pp()) {}
+
+	system("cls");
+	cout << "\n\tСпасибо за внимание! :з\n";
+	_g
+}
