@@ -1,0 +1,268 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+#define _g char g = _getch(); 
+#define fend cout << "\n\n\nНажмите любую кнопку для продолжения.."; _g return;
+
+void z1() {
+	int A=0, B=0;
+
+	{
+		system("cls");
+		cout
+			<< "Задание номер 1\n\n"
+			<< "Введите два числа А и B\n";
+		cin >> A >> B;
+	}
+	system("cls");
+	cout
+		<< "Задание номер 1\n\n"
+		<< "А = " << A
+		<< "   B = " << B;
+	if (A == B) A = B = 0;
+	A = A > B ? A : B;
+	cout 
+		<< "\nНовые значения А и В\n"
+		<< "А = " << A
+		<< "   B = " << B;
+	fend
+}
+
+void z2() {
+	int A = 0, B = 0, C = 0;
+	{
+		system("cls");
+		cout
+			<< "Задание номер 2\n\n"
+			<< "Введите три числа \n";
+		cin >> A >> B >> C;
+	}
+
+	int m;
+
+	m = A > B ? A : B;
+	m = m > C ? m : C;
+
+	if (m == A) m += B > C ? B : C;
+	if (m == B) m += A > C ? A : C;
+	if (m == C) m += A > B ? A : B;
+
+	system("cls");
+
+	cout
+		<< "Задание номер 2\n\n"
+		<< "А = " << A
+		<<"   "
+		<< "B = " << B
+		<<"   "
+		<< "C = " << C
+		<< "\nСумма двух наибольших чисел равна "
+		<< m;
+
+	fend
+}
+
+void dco(char d, float x, float y) {
+	cout << d << " (" << x << "," << y << ")  ";
+}
+
+void z3() {
+	float xa, xb, xc, ya, yb, yc;
+	{
+		system("cls");
+		cout << "Задание номер 3\n\n";
+
+		cout << "Введите координаты точки A\nx=";
+		cin >> xa;
+		cout << "y=";
+		cin >> ya;
+		cout << "Введите координаты точки B\nx=";
+		cin >> xb;
+		cout << "y=";
+		cin >> yb;
+		cout << "Введите координаты точки C\nx=";
+		cin >> xc;
+		cout << "y=";
+		cin >> yc;
+	}	
+	float  ab, ac;
+
+	ab = sqrtf(powf((xa - xb), 2) + powf((ya - yb), 2));
+	ac = sqrtf(powf((xc - xa), 2) + powf((yc - ya), 2));
+
+	char md = ' ';
+	float mdd = 0;
+	if (ab > ac) {
+		mdd = ab;
+		md = 'B';
+	}
+	if (ac > ab) {
+		mdd = ab;
+		md = 'B';
+	}
+
+	system("cls");
+	cout << "Задание номер 3\n\n";
+	dco('A', xa, ya);
+	dco('B', xb, yb);
+	dco('C', xc, yc);
+	if (mdd == 0) {
+		cout << "\n\nТочки B и C равноудалены от точки A";
+		fend;
+	}
+	cout
+		<< "\n\nБлиже к точке А расположена точка "
+		<< md
+		<< "\nРасстояние от точки A до точки "
+		<< md
+		<< " составляет "
+		<< mdd;
+	fend
+}
+
+void z4() {
+	float x=0, y=0;
+
+	{
+		system("cls");
+		cout 
+			<< "Задание номер 4\n\n"
+			<< "Введите координаты точки \nx=";
+		cin >> x;
+		cout << "y=";
+		cin >> y;
+	}
+
+	int cq = (int)(x * y);
+	if (cq != 0) {
+		cq = cq > 0 ? 1 : 2;
+		if (cq == 1 && x < 0) cq = 3;
+		if (cq == 2 && y < 0) cq = 4;
+	}
+
+	system("cls");
+	cout
+		<< "Задание номер 4\n\n"
+		<< "Введенная вами точка с координатами ("
+		<< x
+		<< ";"
+		<< y
+		<< ") расположена ";
+	if (cq == 0) { 
+		cout << "на координатной оси"; fend; 
+	}
+	cout
+		<<"в "
+		<< cq
+		<< "-й координатной плоскости";
+	fend
+}
+
+void vp(int a) {
+	cout << (a % 2 == 0 ? "четное " : "нечетное ");
+	return;
+}
+
+void z5() {
+	int a = 0;
+
+	{
+		system("cls");
+		cout
+			<< "Задание номер 5\n\n"
+			<< "Введите целое число\n";
+		cin
+			>> a;
+	}
+
+	system("cls");
+	cout
+		<< "Задание номер 5\n\n"
+		<< "Введенное вами число "
+		<< a
+		<< " - ";
+	if (a == 0) cout << "нулевое ";
+	else {
+		if (a > 0) cout << "положительное ";
+		if (a < 0) {
+			cout << "отрицательное ";
+			a *= -1;
+		}
+		vp(a);
+	}
+	cout << "число";
+	fend
+}
+
+void ndn(int a) {
+	if (a == a % 10) {
+		cout<<"однозначное ";
+		return;
+	}
+	if (a == a % 100) {
+		cout << "двузначное ";
+		return;
+	}
+	cout << "трехначное ";
+	return;
+}
+
+void z6()
+{
+	int a = 0;
+
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 6\n\n"
+			<< "Введите целое число в диапазоне 1–999\n";
+		cin
+			>> a;
+		if (a == 0) return;
+	} while (a<1 && a>999);	
+
+	system("cls");
+	cout
+		<< "Задание номер 6\n\n"
+		<< "Введенное вами число "
+		<< a
+		<< " - ";
+	if (a == 0) cout << "нулевое ";
+	else {
+		vp(a);
+		ndn(a);
+	}
+	cout << "число";
+	fend
+}
+
+int pp() {
+	int a = 0;
+	system("cls");
+	cout << "Выберите номер задания\n(для завершения введите 0)\n\n";
+	cin >> a;
+	switch (a)
+	{
+	case 0: return 0;
+	case 1: z1(); return 1;
+	case 2: z2(); return 1;
+	case 3: z3(); return 1;
+	case 4: z4(); return 1;
+	case 5: z5(); return 1;
+	case 6: z6(); return 1;
+	}
+	return 1;
+}
+
+int main()
+{
+	setlocale(0, "");
+
+	while (pp()) {}
+
+	system("cls");
+	cout << "\n\tСпасибо за внимание! :з\n";
+	_g
+}
