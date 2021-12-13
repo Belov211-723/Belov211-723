@@ -1,0 +1,385 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+
+using namespace std;
+
+#define _g char g = _getch(); 
+#define fend cout << "\n\n\nНажмите любую кнопку для продолжения.."; _g return;
+
+using namespace std;
+
+string fz1(int a, int b) {
+	string w;
+
+	switch (a) {
+	case 1: w = "Первое"; break;
+	case 2: w = "Второе"; break;
+	case 3: w = "Третье"; break;
+	case 4: w = "Четвертое"; break;
+	case 5: w = "Пятое"; break;
+	case 6: w = "Шестое"; break;
+	case 7: w = "Седьмое"; break;
+	case 8: w = "Восьмое"; break;
+	case 9: w = "Девятое"; break;
+	case 10: w = "Десятое"; break;
+	case 11: w = "Одиннадцатое"; break;
+	case 12: w = "Двенадцатое"; break;
+	case 13: w = "Тринадцатое"; break;
+	case 14: w = "Четырнадцатое"; break;
+	case 15: w = "Пятнадцатое"; break;
+	case 16: w = "Шестнадцатое"; break;
+	case 17: w = "Семнадцатое"; break;
+	case 18: w = "Восемнадцатое"; break;
+	case 19: w = "Девятнадцатое"; break;
+	case 20: w = "Двадцатое"; break;
+	case 21: w = "Двадцать первое"; break;
+	case 22: w = "Двадцать второе"; break;
+	case 23: w = "Двадцать третье"; break;
+	case 24: w = "Двадцать четвертое"; break;
+	case 25: w = "Двадцать пятое"; break;
+	case 26: w = "Двадцать шестое"; break;
+	case 27: w = "Двадцать седьмое"; break;
+	case 28: w = "Двадцать восьмое"; break;
+	case 29: w = "Двадцать девятое"; break;
+	case 30: w = "Тридцатое"; break;
+	case 31: w = "Тридцать первое"; break;
+	}
+
+	switch (b) {
+	case 1: w += " января"; break;
+	case 2: w += " февраля"; break;
+	case 3: w += " марта"; break;
+	case 4: w += " апреля"; break;
+	case 5: w += " мая"; break;
+	case 6: w += " июня"; break;
+	case 7: w += " июля"; break;
+	case 8: w += " августа"; break;
+	case 9: w += " сентября"; break;
+	case 10: w += " октября"; break;
+	case 11: w += " ноября"; break;
+	case 12: w += " декабря"; break;
+	}
+
+	return w;
+}
+
+string fz4(int a) {
+	string w;
+
+	if (a % 100 > 9 && a % 100 < 20) 
+	{
+		switch (a % 100) {
+		case 10: w = "десять"; break;
+		case 11: w = "одиннадцать"; break;
+		case 12: w = "двенадцать"; break;
+		case 13: w = "тринадцать"; break;
+		case 14: w = "четырнадцать"; break;
+		case 15: w = "пятнадцать"; break;
+		case 16: w = "шестнадцать"; break;
+		case 17: w = "семнадцать"; break;
+		case 18: w = "восемнадцать"; break;
+		case 19: w = "девятнадцать"; break;
+		}
+
+		a /= 10;
+	}
+
+	else 
+	{
+		switch (a % 10) {
+		case 1: w = "один"; break;
+		case 2: w = "два"; break;
+		case 3: w = "три"; break;
+		case 4: w = "четыре"; break;
+		case 5: w = "пять"; break;
+		case 6: w = "шесть"; break;
+		case 7: w = "семь"; break;
+		case 8: w = "восемь"; break;
+		case 9: w = "девять"; break;
+		}
+
+		a /= 10;
+
+		switch (a % 10) {
+		case 1: w = "десять" + w; break;
+		case 2: w = "двадцать " + w; break;
+		case 3: w = "тридцать " + w; break;
+		case 4: w = "сорок " + w; break;
+		case 5: w = "пятьдесят " + w; break;
+		case 6: w = "шестьдесят " + w; break;
+		case 7: w = "семьдесят " + w; break;
+		case 8: w = "восемьдесят " + w; break;
+		case 9: w = "девяносто " + w; break;
+		}
+	}
+
+	a /= 10;
+
+	switch (a % 10) {
+	case 1: w = "cто " + w; break;
+	case 2: w = "двести " + w; break;
+	case 3: w = "триста " + w; break;
+	case 4: w = "четыреста " + w; break;
+	case 5: w = "пятьсот " + w; break;
+	case 6: w = "шестьсот " + w; break;
+	case 7: w = "семьсот " + w; break;
+	case 8: w = "восемьсот " + w; break;
+	case 9: w = "девятьсот " + w; break;
+	}
+
+	w[0] -= 32;
+	return w;
+}
+
+void z1() {
+	int a = 0, b = 0;
+
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 4\n\n"
+			<< "Введите номер дня\n";
+		cin >> a;
+		if (a == 0) return;
+		if (a < 1 || a > 31) continue;
+		cout<<"\nи номер месяца\n";
+		cin >> b;
+		if (a == 0||b==0) return;
+	} while (a < 1 || a > 31 || b < 1 || b > 12);
+
+	system("cls");
+	cout
+		<< "Задание номер 1\n\n"
+		<< "Введенная вами дата - "
+		<< a
+		<< "."
+		<< b
+		<< "\nВ текстовом представлении - "
+		<< fz1(a, b);
+
+	fend;
+}
+
+void z2() {
+	char C = ' ';
+	int N = 0;
+	int D = 0;
+	string C1 = " ";
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 2\n\n"
+			<< "Введите исходное направление робота с/ю/з/в\n";
+		cin >> C;
+
+		switch ((int)C) {
+		case 67:
+		case 99: C1 = "Север"; D = 1; break;
+		case -111:
+		case -31: C1 = "Север"; D = 1; break;
+		case -98:
+		case -18: C1 = "Юг"; D = 3; break;
+		case -121:
+		case -89: C1 = "Запад"; D = 2; break;
+		case -126:
+		case -94: C1 = "Восток"; D = 4; break;
+		}
+		if (D == 0) continue;
+
+		cout
+			<< "\nИ цифровую команду\n"
+			<< " 0 - продолжать движение\n"
+			<< " 1 - поворот налево\n"
+			<< " -1 - поворот направо\n";
+		cin >> N;
+	} while (!(N == 0 || N == 1 || N == -1));
+
+	D += N;
+	if (D == 0) D = 4;
+	if (D == 5) D = 1;
+
+	system("cls");
+	cout
+		<< "Задание номер 2\n\n"
+		<< "Исходное напрвление - "
+		<<C1
+		<< "\nКоманда - ";
+	if (N == 0) cout << "продолжать движение\n";
+	if (N == 1) cout << "поворот налево\n";
+	if (N == -1) cout << "поворот направо\n";
+	
+	switch (D) {
+	case 1: C1 = "Север"; break;
+	case 2: C1 = "Запад"; break;
+	case 3: C1 = "Юг"; break;
+	case 4: C1 = "Восток"; break;
+	}
+	
+	cout
+		<< "\nНаправление после выполнения команды "
+		<< C1;
+	fend;
+}
+
+void z3() {
+	int a = 0;
+
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 4\n\n"
+			<< "Введите число от 10 до 40\n";
+		cin >> a;
+		if (a == 0) return;
+	} while (a > 40 || a < 10);
+
+	
+
+		int ffo = 1;
+		string w = "";
+
+		switch (a) {
+		case 10: w = "Десять"; break;
+		case 11: w = "Одиннадцать"; break;
+		case 12: w = "Двенадцать"; break;
+		case 13: w = "Тринадцать"; break;
+		case 14: w = "Четырнадцать"; break;
+		case 15: w = "Пятнадцать"; break;
+		case 16: w = "Шестнадцать"; break;
+		case 17: w = "Семнадцать"; break;
+		case 18: w = "Восемнадцать"; break;
+		case 19: w = "Девятнадцать"; break;
+		}
+		if (a >= 20) {
+			w = "Двадцать";
+			if (a >= 30) { w = "Тридцать"; }
+			if (a % 10 != 0)
+				switch (a % 10) {
+				case 1: w += " одно"; ffo = 2; break;
+				case 2: w += " два"; ffo = 3; break;
+				case 3: w += " три"; ffo = 3; break;
+				case 4: w += " четыре"; ffo = 3; break;
+				case 5: w += " пять"; break;
+				case 6: w += " шесть"; break;
+				case 7: w += " семь"; break;
+				case 8: w += " восемь"; break;
+				case 9: w += " девять"; break;
+				}
+			if (a == 40) w = "Сорок";
+		}
+		switch (ffo) {
+		case 1: w += " заданий"; break;
+		case 2: w += " задание"; break;
+		case 3: w += " задания"; break;
+		}
+		system("cls");
+		cout
+			<< "Задание номер 4\n\n"
+			<< "Введенное число - "
+			<< a
+			<< "\n - " 
+			<<w;
+		fend
+	}
+
+void z4() {
+	int a = 0;
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 4\n\n"
+			<< "Введите число от 100 до 999\n";
+
+		cin >> a;
+		if (a == 0) return;
+
+	} while (a > 999 || a < 100);
+
+	system("cls");
+	cout
+		<< "Задание номер 1\n\n"
+		<< "Введенное вами число - "
+		<< a
+		<< "\nВ текстовом представлении - "
+		<< fz4(a);
+
+	fend
+}
+
+void z5() {
+	int a = 0;
+
+	do {
+		system("cls");
+		cout
+			<< "Задание номер 5\n\n"
+			<< "Введите год \n";
+		cin >> a;
+		if (a == 0) return;
+	} while (a < 1984);
+
+	int b = (a - 1984) % 60;
+
+	string w = "Год ";
+
+
+	switch (b / 12) {
+	case 0: w += "зелено"; break;
+	case 1: w += "красно"; break;
+	case 2: w += "желто"; break;
+	case 3: w += "бело"; break;
+	case 4: w += "черно"; break;
+	}
+
+	switch (b % 12) {
+	case 0: w += "й крысы"; break;
+	case 1: w += "й коровы"; break;
+	case 2: w += "го тигра"; break;
+	case 3: w += "го зайца"; break;
+	case 4: w += "го дракона"; break;
+	case 5: w += "й змеи"; break;
+	case 6: w += "й лошади"; break;
+	case 7: w += "й овцы"; break;
+	case 8: w += "й обезьяны"; break;
+	case 9: w += "й курицы"; break;
+	case 10: w += "й собаки"; break;
+	case 11: w += "й свиньи"; break;
+	}
+
+
+	cout
+		<< "\n\nВведенный год - "
+		<< a
+		<< "\nНазвание года по восточному календарю - "
+		<< w;
+	fend
+}
+
+int pp() {
+	int a = 0;
+	system("cls");
+	cout << "Выберите номер задания\n(для завершения введите 0)\n\n";
+	cin >> a;
+	switch (a)
+	{
+	case 0: return 0;
+	case 1: z1(); return 1;
+	case 2: z2(); return 1;
+	case 3: z3(); return 1;
+	case 4: z4(); return 1;
+	case 5: z5(); return 1;
+	}
+	return 1;
+}
+
+int main()
+{
+	setlocale(0, "");
+
+	while (pp()) {}
+
+	system("cls");
+	cout << "\n\tСпасибо за внимание! :з\n";
+	_g
+}
