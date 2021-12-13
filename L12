@@ -7,8 +7,6 @@ using namespace std;
 #define _g char g = _getch(); 
 #define fend cout << "\n\n\nНажмите любую кнопку для продолжения.."; _g return;
 
-using namespace std;
-
 string fz1(int a, int b) {
 	string w;
 
