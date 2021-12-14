@@ -1,0 +1,156 @@
+#include <iostream>
+#include <conio.h>
+#include<math.h>
+
+using namespace std;
+
+#define _g char g = _getch(); 
+#define fend cout << "\n\n\nНажмите любую кнопку для продолжения.."; _g return;
+
+void zo(int a) {
+	system("cls");
+	cout
+		<< "Задание номер "<<a<<"\n\n";
+}
+
+void z1() {
+	double a;
+	do {
+		zo(1);
+		cout << "Введите цену одного кг конфет\n";
+		cin>>a;
+		if (a == 0) return;
+	} while (a < 0);
+
+	zo(1);
+
+	for (double i = 0.1; i <= 1; i+=0.1)
+		cout << i*a <<" ";
+
+	fend
+}
+
+void z2() {
+	int n;
+	do {
+		zo(2);
+		cout << "Введите N (> 0)\n";
+		cin >> n;
+		if (n == 0) return;
+	} while (n < 0);
+
+	zo(2);
+
+	double a = 1;
+	double b = 1.1;
+
+	
+
+	for (double i = 0; i < n; i++)
+	{
+	a *= b;
+	b += 0.1;
+	}
+
+	cout << a;
+	fend
+}
+
+void z3() {
+	int n=0;
+
+	do {
+		zo(2);
+		cout << "Введите N (> 0)\n";
+		cin >> n;
+		if (n == 0) return;
+	} while (n < 0);
+	
+	zo(3);
+
+	int a = 0;
+	for (int i = 1; i <= (2 * n - 1); i += 2)
+		a += i;
+	
+	cout << a;
+	fend
+}
+
+void z4() {
+	float a = 0;
+	int n=0;
+	do {
+		zo(4);
+		cout << "Введите вещественное A\n";
+		cin >> a;
+		cout << "Введите целое N (> 0)\n";
+		cin >> n;
+	} while (n < 0);
+
+	zo(4);
+
+	double s = 0;
+
+	for (int i = 0; i <= n; i++) {
+		s += powf(a, i);
+	}
+
+	cout << s;
+	fend
+}
+
+void z5() {
+	float a = 0;
+	int n = 0;
+	do {
+		zo(5);
+		cout << "Введите вещественное A\n";
+		cin >> a;
+		cout << "Введите целое N (> 0)\n";
+		cin >> n;
+	} while (n < 0);
+
+	zo(5);
+
+	double s = 0;
+
+	for (int i = 0; i <= n; i++) {
+		s += powf(-a, i);
+	}
+
+	cout <<endl<< s;
+
+	fend
+}
+
+int pp() 
+{
+	int a;
+
+	system("cls");
+	cout << "Выберите номер задания\n(для завершения введите 0)\n\n";
+	
+	cin >> a;
+
+	switch (a)
+	{
+	case 0: return 0;
+	case 1: z1(); return 1;
+	case 2: z2(); return 1;
+	case 3: z3(); return 1;
+	case 4: z4(); return 1;
+	case 5: z5(); return 1;
+	default: return 1;
+	}
+}
+
+int main()
+{
+	setlocale(0, "");
+
+	while (pp()) {}
+
+	system("cls");
+	cout << "\n\tСпасибо за внимание! :з\n";
+	_g
+}
