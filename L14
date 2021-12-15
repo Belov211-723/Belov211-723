@@ -1,0 +1,200 @@
+#include <iostream>
+#include <conio.h>
+#include<math.h>
+
+using namespace std;
+
+#define _g char g = _getch(); 
+#define fend cout << "\n\n\nНажмите любую кнопку для продолжения.."; _g return;
+
+void zo(int a) {
+	system("cls");
+	cout
+		<< "Задание номер " << a << "\n\n";
+}
+
+void z1() {
+	int A = 0, B = 0;
+	do {
+		zo(1);
+		cout << "Введите два числа А и B так, что A < B\n";
+		cin >> A >> B;
+		if (B == 0) return;
+	} while ( A < 0 || !(A < B));
+
+	zo(1);
+	cout
+		<< "А = " << A
+		<< "   B = " << B
+		<< "\nВсе целые числа от A до B включительно\n";
+	for (int i = A; i <= B; i++)
+		cout << i << " ";
+
+	fend
+}
+
+void z2() {
+	int A = 0, B = 0;
+	do {
+		zo(2);
+		cout << "Введите два числа А и B так, что A > B\n";
+		cin >> A >> B;
+		if (A == 0) return;
+	} while (B <= 0 || !(A > B));
+
+	zo(2);
+	cout
+		<< "А = " << A
+		<< "   B = " << B
+		<< "\nДлина незанятой части отрезка A отрезками B\n";
+	while (A >= B)
+		A -= B;
+	cout << A;
+	fend
+}
+
+void z3() {
+	int n = 0;
+
+	do {
+		zo(2);
+		cout << "Введите N (> 1)\n";
+		cin >> n;
+		if (n == 0) return;
+	} while (n <= 1);
+
+	zo(3);
+
+	int a = 0, i = 0;
+	for (i = 1; a < n; i++)
+		a += i;
+	i--;
+	cout
+		<< "Введенное N - "
+		<< n
+		<< "\nНаименьшее из целых чисел K, для которых сумма 1 + 2 + . . . + K будет больше или равна N\n"
+		<< i;
+	fend
+}
+
+void z4() {
+	float A = 1000;
+	float P = 0;
+	do {
+		zo(4);
+		cout << "Введите процент(P) (0 < P < 25)\n";
+		cin >> P;
+		if ( P == 0) return;
+	} while (!(0.0 < P && P < 25.0));
+
+	zo(4);
+
+	cout
+		<< "А = " << A
+		<< "   P = " << P
+		<< "\nРазмер вклада превысит 1100 руб через \n";
+	int i = 0;
+	while (!(A > 1100)) { A += A * (P / 100); i++; }
+	cout
+		<< A 
+		<< " месяцев";
+
+	fend
+}
+
+void z5() {
+	int A = 0, B = 0;
+	do {
+		zo(5);
+		cout << "Введите два целых числа А и B\n";
+		cin >> A >> B;
+		if (A == 0 || B == 0) return;
+	} while (A < 0 || B < 0);
+
+	zo(5);
+	cout
+		<< "А = " << A
+		<< "   B = " << B;
+	int C;
+	
+	while (A != B || A%B!=0 || B%A!=0) {
+	if (A<B) {
+		C = B;
+		B = A;
+		A = C;
+	}
+		C = B;
+		B = A - B;
+		A = C;
+	}
+	cout << "\nНаибольший общий делитель найденный алгоритмом Евклида\n"
+		<<B;
+	fend
+}
+
+int fib(int a, int *k) {
+	int i = 0;
+	*k = 0;
+	int j = 1;
+	while (i<=a) {
+		if (a == i) return 0;
+		int t = j;
+		j += i;
+		i = t;
+		(*k)++;
+	}
+	return 1;
+}
+
+void z6() {
+	int n = 0;
+	int k = 0;
+	do {
+		zo(6);
+		cout << "Введите N являющееся числом фибоначи\n";
+		cin >> n;
+	} while (fib(n, &k));
+
+	zo(6);
+
+	cout
+		<< "Введенное N - "
+		<< n
+		<< "\nПорядковый номер введенного числа Фибоначчи - \n"
+		<< k;
+
+	fend
+}
+
+int pp()
+{
+	int a = 0;
+
+	system("cls");
+	cout << "Выберите номер задания\n(для завершения введите 0)\n\n";
+
+	cin >> a;
+
+	switch (a)
+	{
+	case 0: return 0;
+	case 1: z1(); return 1;
+	case 2: z2(); return 1;
+	case 3: z3(); return 1;
+	case 4: z4(); return 1;
+	case 5: z5(); return 1;
+	case 6: z6(); return 1;
+	default: return 1;
+	}
+}
+
+int main()
+{
+	setlocale(0, "");
+
+	while (pp()) {}
+
+	system("cls");
+	cout << "\n\tСпасибо за внимание! :з\n";
+	_g
+}
