@@ -1,0 +1,168 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+#define _g char g = _getch(); 
+#define fend cout << "\n\n\nНажмите любую кнопку для продолжения.."; _g return;
+
+void zo(int a) {
+	system("cls");
+	cout
+		<< "Задание номер " << a << "\n\n";
+}
+
+void PowerA3(float A, float* B) {
+	*B = A * A * A;
+}
+
+void z1() {
+	float a[5] = {0};
+		zo(1);
+		for (int i = 0; i < 5; i++) {
+			cout << "Введите " << i+1 << "-е число\n";
+			cin >> a[i];
+		} 
+	zo(1);
+	for (int i = 0; i < 5; i++) {
+		cout << i+1 << "-е число = " << a[i] << "  ";
+	}
+	cout << "\nТретьи степени введенных чисел:\n";
+	for (int i = 0; i < 5; i++) {
+		PowerA3(a[i], a + i);
+		cout << i + 1 << "-е число = " << a[i] << "  ";
+	}
+	fend
+}
+
+int Sign(float X) {
+	if (X < 0) return -1;
+	if (X > 0) return 1;
+	return 0;
+}
+
+void z2() {
+	float A = 0, B = 0;
+	{
+		zo(5);
+		cout << "Введите два целых числа А и B\n";
+		cin >> A >> B;
+	}
+	zo(2);
+	cout
+		<< "А = " << A
+		<< "   B = " << B
+		<< "\nВыражение Sign(A) + Sign(B) равно "
+		<< Sign(A) + Sign(B);
+
+	fend
+}
+
+double RingS(double R1, double R2) {
+	if (R1 > R2) {
+		return (3.1415* (R1 * R1 - R2 * R2));
+	}
+	else return 0;
+}
+
+void z3() {
+	zo(3);
+	for (int i = 1; i <= 3; i++) {
+		float R1 = 0, R2 = 0;
+		do {
+			cout << "Введите два радиуса R1 и R2 " << i << "-го кольца так, что R1 > R2\n";
+			cin >> R1 >> R2;
+			if (R1 == R2 == 0) return;
+		} while (!(R1 > R2));
+			cout << "\n";
+			cout
+			<< "Введенные два радиуса: \n"
+			<< "R1 = " << R1
+			<< "   R2 = " << R2
+			<< "\nРадиус заключенного между ними кольца "
+			<< RingS(R1, R2)
+			<< "\n\n\n";
+	}
+	fend
+}
+
+int Quarter(float x, float y) {
+	if (x * y > 0) return x > 0 ? 1 : 3;
+	if (x * y < 0) return x < 0 ? 2 : 4;
+	return 0;
+}
+
+void z4() {
+	zo(4);
+	for (int i = 1; i <= 3; i++) {
+		float x = 0, y = 0;
+		{
+			cout << "Введите координаты X и Y " << i << "-й точки\n";
+			cin >> x >> y;
+		}
+		cout << "\n";
+		cout
+			<< "Введенные координаты: \n"
+			<< "X = " << x
+			<< "   Y = " << y;
+		int Q = Quarter(x, y);
+		if (Q != 0)
+			cout
+			<< "\nУказанная точка расположенна в "
+			<< Q
+			<<"-й координатной плоскости\n\n\n";
+		else
+			cout << "\nОшибка, указанная точка расположена на координатной оси\n\n\n";
+	}
+	fend
+}
+	
+float Fact2(int N) {
+	return N > 0 ? N * Fact2(N - 2): 1;
+}
+
+void z5() {
+	int n=0;
+	do {
+		zo(5);
+		cout << "Введите число N (> 0) \n";
+		cin >> n;
+	} while (n < 0);
+	zo(5);
+	cout << "Введенное число N = " << n
+		<<"\nДвойной факториал введенного числа - "
+		<< Fact2(n);
+	fend
+}
+
+int pp()
+{
+	int a = 0;
+
+	system("cls");
+	cout << "Выберите номер задания\n(для завершения введите 0)\n\n";
+
+	cin >> a;
+
+	switch (a)
+	{
+	case 0: return 0;
+	case 1: z1(); return 1;
+	case 2: z2(); return 1;
+	case 3: z3(); return 1;
+	case 4: z4(); return 1;
+	case 5: z5(); return 1;
+	}
+	return 1;
+}
+
+int main()
+{
+	setlocale(0, "");
+
+	while (pp()) {}
+
+	system("cls");
+	cout << "\n\tСпасибо за внимание! :з\n";
+	_g
+}
