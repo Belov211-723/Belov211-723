@@ -28,7 +28,7 @@ int getN(int a, int s) {
 void z1() {
 	int N = getN(1, 0);
 	int* A = new int[N];
-	if (0 == A) { cout << "Ошибка инициализации массива"; _g return; }
+	if (0 == N) { cout << "Ошибка инициализации массива"; _g return; }
 
 	zo(1);
 	cout 
@@ -70,17 +70,18 @@ void z3() {
 	int N = getN(3, 2);
 	int* A = new int[N];
 	if (0 == N) { cout << "Ошибка инициализации массива"; _g return; }
+
 	cout << "Введите первый и второй элементы последовательности\n";
-
-	for (int i = 0; i < N; i++) A[i] = 0;
-
-	cin >> A[0] >> A[1];
-	A[2] = A[0] + A[1];
+		cin >> A[0] >> A[1];
+		A[2] = A[0] + A[1];
 
 	zo(3);
+
 	cout
 		<< "Размер массива - "
 		<< N
+		<< "\nПервый член A1 = " <<A[0]
+		<< "\nВторой член A2 = " << A[1]
 		<< "\nЭлементы массива:\n";
 	for (int i = 0; i < N; i++) {
 		if (i>2) A[i] = A[i - 1] * 2;
@@ -94,14 +95,14 @@ void z4() {
 	int N = getN(4, 0);
 	int* A = new int[N];
 	if (0 == N) { cout << "Ошибка инициализации массива"; _g return; }
-	cout << "Заполнить массив\nвручную - 1   случайно - 0\n";
+	cout << "Заполнить массив\nслучайно - -1   порядковым номером - 0   вручную - 1\n";
 	int f = 0;
 	cin >> f;
 
-	for (int i = 0; i < N; i++) A[i] = 0;
+	for (int i = 0; i < N; i++) A[i] = i+1;
 
+	if (f == -1) for (int i = 0; i < N; i++) A[i] = -10 + rand() % 20;
 	if (f == 1) for (int i = 0; i < N; i++) cin >> A[i];
-	if (f == 0) for (int i = 0; i < N; i++) A[i] = -10 + rand() % 20;
 
 	zo(4);
 
@@ -132,7 +133,7 @@ void z5() {
 	int f = 0;
 	cin >> f;
 
-	for (int i = 0; i < N; i++) A[i] = 0;
+	for (int i = 0; i < N; i++) A[i] = i;
 
 	if (f == -1) for (int i = 0; i < N; i++) A[i] = -10 + rand() % 20;
 	if (f == 1) for (int i = 0; i < N; i++) cin >> A[i];
