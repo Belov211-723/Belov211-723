@@ -1,0 +1,316 @@
+#include <iostream>
+#include <conio.h>
+#include <ctime>
+
+using namespace std;
+
+#define _g char g = _getch(); 
+#define fend cout << "\n\n\nНажмите любую кнопку для продолжения.."; _g return;
+
+void zo(int a) {
+	system("cls");
+	cout
+		<< "Задание номер " << a << "\n\n";
+}
+
+int getN(int a, int s) {
+	int N;
+	do {
+		N = 0;
+		zo(a);
+		cout << "Введите размер массива N\n";
+		cin >> N;
+		if (N == 0) return 0;
+	} while (!(N > s) || N>1000000);
+	return N;
+}
+
+void z1() {
+	int N = getN(1, 0);
+	int* A = new int[N];
+	if (0 == N) { cout << "Ошибка инициализации массива"; _g return; }
+
+	cout << "Заполнить массив\nслучайно - -1   порядковым номером - 0   вручную - 1\n";
+	int f = 0;
+	cin >> f;
+
+	for (int i = 0; i < N; i++) A[i] = i;
+
+	if (f == -1) for (int i = 0; i < N; i++) A[i] = -10 + rand() % 20;
+	if (f == 1) { cout << "\nВведите массив А\n"; for (int i = 0; i < N; i++) cin >> A[i]; }
+
+	int k, l;
+	k = 0;
+	l = -1;
+	while (!(k <= l) || l >= N) {cout << "Введите числа К и L так, что (1 <= K <= L <= N)\n"; cin >> k >> l; }
+
+	zo(1);
+	cout 
+		<<"Размер массива - "
+		<< N
+		<< "\nЭлементы массива:\n";
+
+	float sr = 0;
+	int n = 0;
+
+	for (int i = 0; i < N; i++) {
+		cout << A[i] << " ";
+		if (i >= k && i <= l) { sr += (float)A[i]; n++; }
+	}
+
+	sr /= n;
+
+	cout
+		<< "\nЧисло К = " << k
+		<< "\nЧисло L = " << l
+		<< "\nСреднее арифметическое элементов массива с номерами от K до L включительно = "
+		<< sr;
+	fend
+}
+
+void z2() {
+	int N = getN(2, 2);
+	int* A = new int[N];
+	if (0 == N) { cout << "Ошибка инициализации массива"; _g return; }
+	
+	{
+		cout << "Заполнить массив\nслучайно - -1   порядковым номером - 0   вручную - 1\n";
+		int f = 0;
+		cin >> f;
+
+		for (int i = 0; i < N; i++) A[i] = i;
+
+		if (f == -1) {
+			if (N > 100) {
+				cout << "Генератор не позволяет создать столько не повторяющихся чисел";
+				fend
+			}
+			for (int i = 0; i < N; ) {
+				int nv = -50 + rand() % 120;
+				int f = 1;
+				for (int j = 0; j < i; j++)
+					if (A[j] == nv) {
+						f = 0; break;
+					}
+				if (f) {
+					A[i] = nv;
+					i++;
+				}
+			}
+		}
+		int br = 0;
+		if (f == 1) {
+			cout << "\nВведите массив А\n";
+			for (int i = 0; i < N; ) {
+				int nv = 0;
+				cin >> nv;
+				int f = 1;
+				for (int j = 0; j < i; j++)
+					if (A[j] == nv) {
+						f = 0; break;
+					}
+				if (f) {
+					A[i] = nv;
+					i++;
+					br = 0;
+				}
+				else {
+					cout << "Такой элемент уже был\n";
+					br++;
+				}
+				if (br >= 5) return;
+			}
+		}
+	}
+
+	zo(2);
+
+	cout
+		<< "Размер массива - "
+		<< N
+		<< "\nЭлементы массива:\n";
+	cout << A[0] << " ";
+		int f = 1;
+		int d = A[2] - A[1];
+	for (int i = 1; i < N; i++) {
+		cout << A[i] << " ";
+		if (!(A[i] - A[i - 1] == d)) f = 0;
+	}
+
+	if (f==1)
+	cout
+		<< "\nДанный массив является арифметической прогрессией"
+		<< "\nРазность прогрессии - " << A[1] - A[0];
+	if (f==0)
+		cout
+		<< "\nДанный массив не является арифметической прогрессией\n"
+		<< 0;
+	fend
+}
+
+void z3() {
+	int N = getN(3, 2);
+	int* A = new int[N];
+	if (0 == N) { cout << "Ошибка инициализации массива"; _g return; }
+	cout << "Заполнить массив\nслучайно - -1   порядковым номером - 0   вручную - 1\n";
+	int f = 0;
+	cin >> f;
+
+	for (int i = 0; i < N; i++) A[i] = i;
+
+	if (f == -1) for (int i = 0; i < N; i++) A[i] = -10 + rand() % 20;
+	if (f == 1) { cout << "\nВведите массив А\n"; for (int i = 0; i < N; i++) cin >> A[i]; }
+
+	zo(3);
+
+	cout
+		<< "Размер массива - "
+		<< N
+		<< "\nЭлементы массива:\n";
+
+	int min = A[0];
+
+	for (int i = 0; i < N; i++) {
+		if (i % 2 == 0 && A[i] < min)min = A[i];
+		cout << A[i] << " ";
+	}
+
+	cout
+		<< "\nМинимальный элемент с четным номером - " << min;
+
+	fend
+}
+
+void z4() {
+	int N = getN(4, 2);
+	int* A = new int[N];
+	if (0 == N) { cout << "Ошибка инициализации массива"; _g return; }
+	cout << "Заполнить массив\nслучайно - -1   порядковым номером - 0   вручную - 1\n";
+	int f = 0;
+	cin >> f;
+
+	for (int i = 0; i < N; i++) A[i] = i;
+
+	if (f == -1) for (int i = 0; i < N; i++) A[i] = -10 + rand() % 20;
+	if (f == 1) { cout << "\nВведите массив А\n"; for (int i = 0; i < N; i++) cin >> A[i]; }
+
+	zo(4);
+
+	cout
+		<< "Размер массива - "
+		<< N
+		<< "\nЭлементы массива:\n";
+
+	int locmax = -1;
+	cout << A[0]<< " ";
+	for (int i = 1; i < N-1; i++) {
+		if (A[i-1]<A[i] && A[i+1]<A[i]) locmax = i;
+		cout << A[i] << " ";
+	}
+	cout << A[N-1] << " ";
+
+	if (locmax == -1)
+		cout << "\nТакого элемента нет\n";
+	else 
+		cout << "\nНомер последнего локального максимума - " << locmax << "\nЗначение последнего локального максимума - "<<A[locmax];
+	fend
+}
+
+void z5() {
+	int N = getN(5, 2);
+	int* A = new int[N];
+	if (0 == N) { cout << "Ошибка инициализации массива"; _g return; }
+	cout << "Заполнить массив\nслучайно - -1   порядковым номером - 0   вручную - 1\n";
+	int f = 0;
+	cin >> f;
+
+	for (int i = 0; i < N; i++) A[i] = i;
+
+	if (f == -1) {
+		if (N > 100) {
+			cout << "Генератор не позволяет создать столько не повторяющихся чисел";
+			fend
+		}
+		for (int i = 0; i < N; ) {
+			int nv = -50 + rand() % 120;
+			int f = 1;
+			for (int j = 0; j < i; j++)
+				if (A[j] == nv) {
+					f = 0; break;
+				}
+			if (f) {
+				A[i] = nv;
+				i++;
+			}
+		}
+
+		{
+			int r1 = rand() % N;
+			int r2 = r1;
+			while (r2 == r1) r2 = rand() % N;
+			A[r1] = A[r2]; 
+		}
+	}
+
+	if (f == 1) { cout << "\nВведите массив А\n"; for (int i = 0; i < N; i++) cin >> A[i]; }
+
+	zo(5);
+
+	cout
+		<< "Размер массива - "
+		<< N
+		<< "\nЭлементы массива:\n";
+
+	for (int i = 0; i < N ; i++) {
+		cout << A[i] << " ";
+	}
+
+	int tse1 = 0, tse2 = 0;
+
+	for (int i = 0; i < N; i++) {
+		int co = 1;
+		for (int j = i+1; j < N; j++)
+			if (A[i] == A[j]) { tse1 = i; tse2 = j; co = 0; break; }
+		if (co == 0) break;
+	}
+
+	if (tse1==tse2)
+		cout << "\nТакого элемента нет\n";
+	else
+		cout << "\nНомера одинаковых элементов в порядке возрастания " 
+		<< tse1 <<" и "
+		<< tse2;
+	fend
+}
+
+int pp()
+{
+	int a = 0;
+
+	system("cls");
+	cout << "Выберите номер задания\n(для завершения введите 0)\n\n";
+
+	cin >> a;
+
+	switch (a)
+	{
+	case 0: return 0;
+	case 1: z1(); return 1;
+	case 2: z2(); return 1;
+	case 3: z3(); return 1;
+	case 4: z4(); return 1;
+	case 5: z5(); return 1;
+	}
+	return 1;
+}
+
+int main()
+{
+	setlocale(0, "");
+
+	while (pp()) {}
+
+	system("cls");
+	cout << "\n\tСпасибо за внимание! :з\n";
+	_g
+}
